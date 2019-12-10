@@ -1,4 +1,14 @@
 export default {
+  _home: '菜单',
+  _data: '监测点数据',
+  _report: '统计报表',
+  _config: '系统数据维护',
+  realTimeData: '监测点实时数据显示',
+  historyData: '监测点历史数据显示',
+  historyDataChart: '监测点历史趋势曲线',
+  dayReport: '日报表',
+  monthReport: '月报表',
+
   home: '首页',
   login: '登录',
   components: '组件',

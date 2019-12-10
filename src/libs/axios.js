@@ -11,6 +11,7 @@ const addErrorLog = errorInfo => {
   }
   if (!responseURL.includes('save_error_logger')) store.dispatch('addErrorLog', info)
 }
+axios.defaults.withCredentials = true
 
 class HttpRequest {
   constructor (baseUrl = baseURL) {
