@@ -8,6 +8,7 @@ export default {
   historyDataChart: '监测点历史趋势曲线',
   dayReport: '日报表',
   monthReport: '月报表',
+  customer: '站点管理',
 
   home: '首页',
   login: '登录',

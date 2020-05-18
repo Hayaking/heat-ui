@@ -1,14 +1,21 @@
-import { get_customer_list, get_customer_page } from '@/api/customer'
+import {add_customer, get_customer_list, get_customer_page, upsert_customer} from '@/api/customer'
 
 export default {
   state: {
-
+    customer_modal_show: false,
+    customer_for_modal: {}
   },
   mutations: {
-
+    setCustomerModalShow (state, flag) {
+      state.customer_modal_show = flag
+    },
+    setCustomerForModal (state, obj) {
+      state.customer_for_modal = obj
+    }
   },
   getters: {
-
+    getCustomModalShow: state => state.customer_modal_show,
+    getCustomForModal: state => state.customer_for_modal
   },
   actions: {
     handleGetCustomerList ({ commit }) {
@@ -24,6 +31,16 @@ export default {
     handleGetCustomerPage ({ commit }, { pageNo, pageSize }) {
       return new Promise((resolve) => {
         get_customer_page(pageNo, pageSize).then(res => {
+          resolve({
+            state: res.data.state,
+            body: res.data.body
+          })
+        })
+      })
+    },
+    handleUpsertCustomer ({ commit }, { customer }) {
+      return new Promise((resolve) => {
+        upsert_customer(customer).then(res => {
           resolve({
             state: res.data.state,
             body: res.data.body

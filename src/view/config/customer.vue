@@ -1,12 +1,13 @@
 <template>
   <Card>
+    <CustomModal />
     <div slot="title">
       <Input search style="width: 200px"></Input>
-      <Button type="primary">添加</Button>
+      <Button type="primary" @click="show=true">添加</Button>
     </div>
     <Table :columns="TABLE_HEAD" :data="page.records">
       <template slot-scope="{ row, index }" slot="action">
-        <Button type="success">编辑</Button>
+        <Button type="success" @click="showEditModel(row)">编辑</Button>
       </template>
     </Table>
     <Page :total="page.total"
@@ -17,10 +18,13 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+
+import CustomModal from '@/view/config/components/modal/customer-modal'
+import { mapActions, mapGetters, mapMutations } from 'vuex'
 
 export default {
   name: 'customer',
+  components: { CustomModal },
   mounted () {
     this.getCustomPage()
   },
@@ -95,6 +99,10 @@ export default {
     ...mapActions([
       'handleGetCustomerPage'
     ]),
+    ...mapMutations([
+      'setCustomerModalShow',
+      'setCustomerForModal'
+    ]),
     pageChanged (pageNo) {
       this.getCustomPage(pageNo, this.page.size)
     },
@@ -102,6 +110,32 @@ export default {
       this.handleGetCustomerPage({ pageNo, pageSize }).then(res => {
         this.page = res.body
       })
+    },
+    showEditModel (row) {
+      this.show = true
+      this.customer = row
+    }
+  },
+  computed: {
+    ...mapGetters([
+      'getCustomModalShow',
+      'getCustomForModal'
+    ]),
+    show: {
+      get () {
+        return this.getCustomModalShow
+      },
+      set (val) {
+        this.setCustomerModalShow(val)
+      }
+    },
+    customer: {
+      get () {
+        return this.getCustomForModal
+      },
+      set (val) {
+        this.setCustomerForModal(val)
+      }
     }
   }
 }

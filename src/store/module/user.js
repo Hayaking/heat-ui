@@ -67,7 +67,7 @@ export default {
     handleLogin ({ commit }, { userName, password }) {
       userName = userName.trim()
       return new Promise((resolve) => {
-        login({ userName, password }).then(res => {
+        login( userName, password ).then(res => {
           if (res.data.state) commit('setToken', res.data.body)
           resolve(res.data.state)
         })

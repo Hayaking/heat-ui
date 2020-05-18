@@ -104,29 +104,17 @@ export default {
     getData (startDate = 0, endDate = new Date().getTime()) {
       this.handleGetHeatDataPageByDataRange({ custName: this.custName, startDate, endDate }).then(res => {
         if (res.state) {
-          // eslint-disable-next-line no-new
-          new Promise(() => {
-            this.options.xAxis.data = res.body.map(item => {
-              return dateFomat(new Date(item.createDate))
-            })
+          this.options.xAxis.data = res.body.map(item => {
+            return dateFomat(new Date(item.createDate))
           })
-          // eslint-disable-next-line no-new
-          new Promise(() => {
-            this.options.series[0].data = res.body.map(item => {
-              return item.flow
-            })
+          this.options.series[0].data = res.body.map(item => {
+            return item.flow
           })
-          // eslint-disable-next-line no-new
-          new Promise(() => {
-            this.options.series[1].data = res.body.map(item => {
-              return item.pressure
-            })
+          this.options.series[1].data = res.body.map(item => {
+            return item.pressure
           })
-          // eslint-disable-next-line no-new
-          new Promise(() => {
-            this.options.series[2].data = res.body.map(item => {
-              return item.temperature
-            })
+          this.options.series[2].data = res.body.map(item => {
+            return item.temperature
           })
         }
       })

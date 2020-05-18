@@ -77,15 +77,6 @@ export default [
           icon: 'md-home'
         },
         component: () => import('@/view/data/chart')
-      },
-      {
-        path: '/data/realTime',
-        name: 'realTimeData',
-        meta: {
-          title: '监测点数据显示',
-          icon: 'md-home'
-        },
-        component: () => import('@/view/data/real-time')
       }
     ]
   },

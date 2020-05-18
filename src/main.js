@@ -18,6 +18,7 @@ import 'v-org-tree/dist/v-org-tree.css'
 import ECharts from 'vue-echarts'
 import 'echarts/lib/chart/line'
 import 'echarts/lib/component/polar'
+
 Vue.component('v-chart', ECharts)
 // 在 webpack 环境下指向 components/ECharts.vue
 // 实际打包时应该不引入mock

@@ -11,7 +11,7 @@
                   format="yyyy-MM-dd HH:mm"
                   placeholder="开始日期——截止日期"
                   style="width: 300px"/>
-      自动扫描：
+      实时更新：
       <i-switch size="large" v-model="autoRefresh">
         <span slot="open">刷新</span>
         <span slot="close">关闭</span>
@@ -40,7 +40,7 @@ export default {
     }).then(() => {
       this.getData()
     })
-    this.timer = setInterval(this.autoGetData, 2000)
+    this.timer = setInterval(this.autoGetData, 1000)
   },
   data () {
     return {
@@ -78,10 +78,6 @@ export default {
           key: 'totalFlow'
         },
         {
-          title: '时间',
-          key: 'acquireTime'
-        },
-        {
           title: '创建时间',
           slot: 'createDate'
         }
@@ -115,14 +111,13 @@ export default {
       this.getData(pageNo, this.page.size)
     },
     dateChanged (arr) {
-      this.getData(this.page.current, this.page.size, new Date(arr[0]).getTime(), new Date(arr[1]).getTime())
+      this.getData(1, 12, new Date(arr[0]).getTime(), new Date(arr[1]).getTime())
     },
     dateFormat (str) {
       return dateFomat(str)
     },
     autoGetData () {
       if (this.autoRefresh) {
-        // this.$Message.info('!!!!!!!11')
         this.getData(1, 12, 0, new Date().getTime())
       }
     }

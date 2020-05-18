@@ -12,3 +12,11 @@ export const get_customer_page = (pageNo, pageSize) => {
     method: 'get'
   })
 }
+
+export const upsert_customer = (customer) => {
+  return axios.request({
+    url: `/customer`,
+    data: customer,
+    method: 'put'
+  })
+}
