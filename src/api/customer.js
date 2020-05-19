@@ -2,13 +2,13 @@ import axios from '@/libs/api.request'
 
 export const get_customer_list = () => {
   return axios.request({
-    url: `/customer/list`,
+    url: `/consumer/list`,
     method: 'get'
   })
 }
-export const get_customer_page = (pageNo, pageSize) => {
+export const get_consumer_page = (pageNo, pageSize) => {
   return axios.request({
-    url: `/customer/${pageNo}/${pageSize}`,
+    url: `/consumer/page/${pageNo}/${pageSize}`,
     method: 'get'
   })
 }

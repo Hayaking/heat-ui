@@ -33,8 +33,8 @@ export default [
     component: Main,
     meta: {
       title: '首页',
-      notCache: true,
-      hideInMenu: true
+      notCache: true
+      // hideInMenu: true
     },
     children: [
       {
@@ -47,6 +47,26 @@ export default [
           icon: 'md-home'
         },
         component: () => import('@/view/home')
+      },
+      {
+        path: '/user',
+        name: '用户管理',
+        meta: {
+          title: '用户管理',
+          notCache: true,
+          icon: 'md-home'
+        },
+        component: () => import('@/view/user/user')
+      },
+      {
+        path: '/consumer',
+        name: '消费者管理',
+        meta: {
+          title: '消费者管理',
+          notCache: true,
+          icon: 'md-home'
+        },
+        component: () => import('@/view/config/consumer')
       }
     ]
   },

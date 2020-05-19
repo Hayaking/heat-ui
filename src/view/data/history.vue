@@ -2,8 +2,8 @@
   <Card>
     <div slot="title">
       <Select v-model="custName" style="width: 100px">
-        <Option v-for="(item,index) in customList" :key="index" :value="item.custName">
-          {{item.custName}}
+        <Option v-for="(item,index) in customList" :key="index" :value="item.name">
+          {{item.name}}
         </Option>
       </Select>
       <DatePicker type="datetimerange"
@@ -99,7 +99,7 @@ export default {
     getCustomList () {
       this.handleGetCustomerList().then(res => {
         this.customList = res.body
-        this.custName = res.body[0].custName
+        this.custName = res.body[0].name
       })
     },
     getData (pageNo = 1, pageSize = 12, startDate = 0, endDate = 999999999999999) {

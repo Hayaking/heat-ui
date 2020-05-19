@@ -1,4 +1,4 @@
-import { getUserInfo, login, logout } from '@/api/user'
+import { get_user_page, getUserInfo, login, logout } from '@/api/user'
 import { getToken, setToken } from '@/libs/util'
 
 export default {
@@ -67,7 +67,7 @@ export default {
     handleLogin ({ commit }, { userName, password }) {
       userName = userName.trim()
       return new Promise((resolve) => {
-        login( userName, password ).then(res => {
+        login(userName, password).then(res => {
           if (res.data.state) commit('setToken', res.data.body)
           resolve(res.data.state)
         })
@@ -94,6 +94,16 @@ export default {
           // commit('setAccess', data.access)
           // commit('setHasGetInfo', true)
           resolve(data)
+        })
+      })
+    },
+    handleGetUserPage ({ commit }, { pageNo, pageSize }) {
+      return new Promise((resolve) => {
+        get_user_page(pageNo, pageSize).then(res => {
+          resolve({
+            state: res.data.state,
+            body: res.data.body
+          })
         })
       })
     }

@@ -18,12 +18,17 @@ import 'v-org-tree/dist/v-org-tree.css'
 import ECharts from 'vue-echarts'
 import 'echarts/lib/chart/line'
 import 'echarts/lib/component/polar'
+import VueSocketIO from 'vue-socket.io'
+import BaiduMap from 'vue-baidu-map'
+Vue.use(BaiduMap, {
+  ak: 'p8LeWhRKZFz8OmdC2XQW5EB7abpjtYyW'
+})
+Vue.use(new VueSocketIO({
+  debug: true,
+  connection: 'http://127.0.0.1:9999'
+}))
 
 Vue.component('v-chart', ECharts)
-// 在 webpack 环境下指向 components/ECharts.vue
-// 实际打包时应该不引入mock
-/* eslint-disable */
-// if (process.env.NODE_ENV !== 'production') require('@/mock')
 
 Vue.use(iView, {
   i18n: (key, value) => i18n.t(key, value)

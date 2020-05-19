@@ -1,4 +1,4 @@
-import {add_customer, get_customer_list, get_customer_page, upsert_customer} from '@/api/customer'
+import { get_consumer_page, get_customer_list, upsert_customer } from '@/api/customer'
 
 export default {
   state: {
@@ -28,9 +28,9 @@ export default {
         })
       })
     },
-    handleGetCustomerPage ({ commit }, { pageNo, pageSize }) {
+    handleGetConsumerPage ({ commit }, { pageNo, pageSize }) {
       return new Promise((resolve) => {
-        get_customer_page(pageNo, pageSize).then(res => {
+        get_consumer_page(pageNo, pageSize).then(res => {
           resolve({
             state: res.data.state,
             body: res.data.body

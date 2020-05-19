@@ -4,7 +4,8 @@ import Vuex from 'vuex'
 import user from './module/user'
 import app from './module/app'
 import heatData from './module/heatData'
-import customer from './module/customer'
+import consumer from './module/consumer'
+import consumerConfig from './module/consumerConfig'
 
 Vue.use(Vuex)
 
@@ -22,6 +23,7 @@ export default new Vuex.Store({
     user,
     app,
     heatData,
-    customer
+    consumer,
+    consumerConfig
   }
 })
