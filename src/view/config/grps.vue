@@ -32,60 +32,24 @@ export default {
     return {
       TABLE_HEAD: [
         {
+          title: 'id',
+          key: 'id'
+        },
+        {
           title: '站号',
-          key: 'addr'
+          key: 'no'
         },
         {
-          title: '站点名称',
-          key: 'custName'
+          title: '描述',
+          key: 'describe'
         },
         {
-          title: '温度量程(℃)',
-          key: 'tempRange'
+          title: '是否在线',
+          key: 'isOnline'
         },
         {
-          title: '温度上限',
-          key: 'tempUpper'
-        },
-        {
-          title: '温度下限',
-          key: 'tempLower'
-        },
-        {
-          title: '压力量程',
-          key: 'presRange'
-        },
-        {
-          title: '压力上限',
-          key: 'presUpper'
-        },
-        {
-          title: '压力下限',
-          key: 'presLower'
-        },
-        {
-          title: '流量量程',
-          key: 'flowRange'
-        },
-        {
-          title: '流量上限',
-          key: 'flowUpper'
-        },
-        {
-          title: '流量下限',
-          key: 'flowLower'
-        },
-        {
-          title: '流量倍率',
-          key: 'flowMulti'
-        },
-        {
-          title: '是否入网',
-          key: 'online'
-        },
-        {
-          title: 'GPRS_ID',
-          key: 'gprsId'
+          title: '创建时间',
+          key: 'createDate'
         },
         {
           title: '操作',
@@ -97,7 +61,7 @@ export default {
   },
   methods: {
     ...mapActions([
-      'handleGetCustomerPage'
+      'handleGetGrpsPage'
     ]),
     ...mapMutations([
       'setCustomerModalShow',
@@ -107,7 +71,7 @@ export default {
       this.getCustomPage(pageNo, this.page.size)
     },
     getCustomPage (pageNo = 1, pageSize = 12) {
-      this.handleGetCustomerPage({ pageNo, pageSize }).then(res => {
+      this.handleGetGrpsPage({ pageNo, pageSize }).then(res => {
         this.page = res.body
       })
     },
