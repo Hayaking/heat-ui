@@ -6,3 +6,16 @@ export const get_consumer_config_list = () => {
     method: 'get'
   })
 }
+export const get_config_by_consumer_id = (id) => {
+  return axios.request({
+    url: `consumer/${id}/config`,
+    method: 'get'
+  })
+}
+export const upsert_config = (config) => {
+  return axios.request({
+    url: `consumer/config`,
+    data: config,
+    method: 'post'
+  })
+}

@@ -159,7 +159,9 @@ export const getExplorer = () => {
   else if (isExplorer('Opera')) return 'Opera'
   else if (isExplorer('Safari')) return 'Safari'
 }
-
+export const strIsEmpty = (obj) => {
+  return typeof obj === 'undefined' || obj == null || obj === ''
+}
 /**
  * @description 绑定事件 on(element, event, handler)
  */

@@ -127,7 +127,7 @@ export default [
           title: '监测点维护',
           icon: 'md-home'
         },
-        component: () => import('@/view/config/grps')
+        component: () => import('@/view/grps/grps')
       },
       {
         path: '/user',
@@ -147,7 +147,7 @@ export default [
           notCache: true,
           icon: 'md-home'
         },
-        component: () => import('@/view/config/consumer')
+        component: () => import('@/view/consumer/consumer')
       }
     ]
   }
