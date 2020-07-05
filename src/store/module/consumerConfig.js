@@ -1,4 +1,9 @@
-import { get_config_by_consumer_id, get_consumer_config_list, upsert_config } from '@/api/customerConfig'
+import {
+  get_config_by_consumer_id,
+  get_config_by_id,
+  get_consumer_config_list,
+  upsert_config
+} from '@/api/customerConfig'
 
 export default {
   state: {
@@ -56,6 +61,16 @@ export default {
       return new Promise((resolve) => {
         upsert_config(config).then(res => {
           resolve(res.data.state)
+        })
+      })
+    },
+    handleGetConfigById ({ commit }, { id }) {
+      return new Promise((resolve) => {
+        get_config_by_id(id).then(res => {
+          resolve({
+            state: res.data.state,
+            body: res.data.body
+          })
         })
       })
     }

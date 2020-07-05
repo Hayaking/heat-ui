@@ -2,14 +2,12 @@
   <div class="user-avatar-dropdown">
     <Dropdown @on-click="handleClick">
       <Badge :dot="!!messageUnreadCount">
-        <Avatar :src="userAvatar"/>
+        <h2>{{username}}</h2>
       </Badge>
       <Icon :size="18" type="md-arrow-dropdown"></Icon>
       <DropdownMenu slot="list">
-        <DropdownItem name="message">
-          消息中心<Badge style="margin-left: 10px" :count="messageUnreadCount"></Badge>
-        </DropdownItem>
-        <DropdownItem name="logout">退出登录</DropdownItem>
+        <DropdownItem name="userInfo">个人信息</DropdownItem>
+        <DropdownItem divided name="logout">退出登录</DropdownItem>
       </DropdownMenu>
     </Dropdown>
   </div>
@@ -17,7 +15,7 @@
 
 <script>
 import './user.less'
-import { mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 export default {
   name: 'User',
   props: {
@@ -41,19 +39,28 @@ export default {
         })
       })
     },
-    message () {
+    userInfo () {
       this.$router.push({
-        name: 'message_page'
+        path: '/info'
       })
     },
     handleClick (name) {
       switch (name) {
         case 'logout': this.logout()
           break
-        case 'message': this.message()
+        case 'userInfo': this.userInfo()
           break
       }
     }
+  },
+  computed: {
+    ...mapGetters([
+      'getUser'
+    ]),
+    username () {
+      return this.getUser.username
+    }
+
   }
 }
 </script>

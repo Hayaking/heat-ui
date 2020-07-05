@@ -18,7 +18,7 @@ export default {
     return {
       TABLE_HEAD: [
         {
-          title: '企业名称',
+          title: '消费者名称',
           key: 'custName'
         },
         {

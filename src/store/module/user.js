@@ -1,8 +1,9 @@
-import { get_user_page, getUserInfo, login, logout } from '@/api/user'
+import { find_password, get_user_page, getUserInfo, login, logout, set_user_password, update_user_info } from '@/api/user'
 import { getToken, setToken } from '@/libs/util'
 
 export default {
   state: {
+    user: {},
     userName: '',
     userId: '',
     avatarImgPath: '',
@@ -16,6 +17,10 @@ export default {
     messageContentStore: {}
   },
   mutations: {
+    setUser (state, user) {
+      state.user = user
+      state.hasGetInfo = !state.hasGetInfo
+    },
     setAvatar (state, avatarPath) {
       state.avatarImgPath = avatarPath
     },
@@ -58,6 +63,7 @@ export default {
     }
   },
   getters: {
+    getUser: state => state.user,
     messageUnreadCount: state => state.messageUnreadList.length,
     messageReadedCount: state => state.messageReadedList.length,
     messageTrashCount: state => state.messageTrashList.length
@@ -87,7 +93,8 @@ export default {
     handleGetUserInfo ({ state, commit }) {
       return new Promise((resolve) => {
         getUserInfo(state.token).then(res => {
-          const data = res.data
+          const data = res.data.body
+          commit('setUser', data)
           // commit('setAvatar', data.avatar)
           // commit('setUserName', data.name)
           // commit('setUserId', data.user_id)
@@ -104,6 +111,27 @@ export default {
             state: res.data.state,
             body: res.data.body
           })
+        })
+      })
+    },
+    handleUpdateSelf ({ commit }, { user }) {
+      return new Promise((resolve) => {
+        update_user_info(user).then(res => {
+          resolve(res.data.state)
+        })
+      })
+    },
+    handleSetUserPassword ({ commit }, { oldPassword, passWord }) {
+      return new Promise((resolve) => {
+        set_user_password(oldPassword, passWord).then(res => {
+          resolve(res.data.state)
+        })
+      })
+    },
+    handleFindPassword ({ commit }, { userName, email }) {
+      return new Promise((resolve) => {
+        find_password(userName, email).then(res => {
+          resolve(res.data.state)
         })
       })
     }

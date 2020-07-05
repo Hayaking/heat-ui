@@ -24,62 +24,47 @@ export default [
       title: 'Login - 登录',
       hideInMenu: true
     },
-    component: () => import('@/view/login')
+    component: () => import('@/view/login/login')
   },
   {
-    path: '/',
-    name: '_home',
-    redirect: '/home',
-    component: Main,
+    path: '/findPasswd',
+    name: 'findPasswd',
     meta: {
-      title: '首页',
-      notCache: true,
+      title: '找回密码',
       hideInMenu: true
     },
-    children: [
-      {
-        path: '/home',
-        name: 'home',
-        meta: {
-          hideInMenu: true,
-          title: '首页',
-          notCache: true,
-          icon: 'md-home'
-        },
-        component: () => import('@/view/home')
-      }
-    ]
+    component: () => import('@/view/login/find-passwd.vue')
   },
-  {
-    path: '/_data',
-    name: '_data',
-    redirect: '/data/history',
-    meta: {
-      title: '监测点数据显示',
-      icon: 'md-home'
-    },
-    component: Main,
-    children: [
-      {
-        path: '/data/history',
-        name: 'historyData',
-        meta: {
-          title: '监测点数据显示',
-          icon: 'md-home'
-        },
-        component: () => import('@/view/data/history')
-      },
-      {
-        path: '/data/history/chart',
-        name: 'historyDataChart',
-        meta: {
-          title: '监测点历史趋势曲线',
-          icon: 'md-home'
-        },
-        component: () => import('@/view/data/chart')
-      }
-    ]
-  },
+  // {
+  //   path: '/_data',
+  //   name: '_data',
+  //   redirect: '/data/history',
+  //   meta: {
+  //     title: '监测点数据显示',
+  //     icon: 'md-home'
+  //   },
+  //   component: Main,
+  //   children: [
+  //     {
+  //       path: '/data/history',
+  //       name: 'historyData',
+  //       meta: {
+  //         title: '监测点数据显示',
+  //         icon: 'md-home'
+  //       },
+  //       component: () => import('@/view/data/history')
+  //     },
+  //     {
+  //       path: '/data/history/chart',
+  //       name: 'historyDataChart',
+  //       meta: {
+  //         title: '监测点历史趋势曲线',
+  //         icon: 'md-home'
+  //       },
+  //       component: () => import('@/view/data/chart')
+  //     }
+  //   ]
+  // },
   {
     path: '/_report',
     name: '_report',
@@ -111,38 +96,89 @@ export default [
     ]
   },
   {
-    path: '/_config',
-    name: '_config',
-    redirect: '/config/customer',
+    path: '/admin',
+    name: '监测设备管理',
+    redirect: '/admin/grps',
     meta: {
-      title: '系统数据维护',
+      title: '监测设备管理',
       icon: 'md-home'
     },
     component: Main,
     children: [
       {
-        path: '/config/customer',
-        name: 'customer',
+        path: '/grps',
+        name: '监测设备管理',
         meta: {
-          title: '监测点维护',
+          hideInMenu: true,
+          notCache: true,
+          title: '监测设备管理',
           icon: 'md-home'
         },
         component: () => import('@/view/grps/grps')
-      },
+      }
+    ]
+  },
+  {
+    path: '/admin',
+    name: '日志管理',
+    redirect: '/admin/log',
+    meta: {
+      title: '日志管理',
+      icon: 'md-home'
+    },
+    component: Main,
+    children: [
       {
-        path: '/user',
-        name: '用户管理',
+        path: '/log',
+        name: '日志管理',
         meta: {
-          title: '用户管理',
+          hideInMenu: true,
           notCache: true,
+          title: '日志管理',
           icon: 'md-home'
         },
-        component: () => import('@/view/user/user')
-      },
+        component: () => import('@/view/log/log')
+      }
+    ]
+  },
+  {
+    path: '/admin',
+    name: '数据字典管理',
+    redirect: '/admin/dic',
+    meta: {
+      title: '数据字典管理',
+      icon: 'md-home'
+    },
+    component: Main,
+    children: [
+      {
+        path: '/dic',
+        name: '数据字典管理',
+        meta: {
+          hideInMenu: true,
+          notCache: true,
+          title: '数据字典管理',
+          icon: 'md-home'
+        },
+        component: () => import('@/view/dic/dic')
+      }
+    ]
+  },
+  {
+    path: '/admin',
+    name: '消费者管理',
+    redirect: '/admin/consumer',
+    meta: {
+      title: '消费者管理',
+      icon: 'md-home'
+    },
+    component: Main,
+    children: [
       {
         path: '/consumer',
         name: '消费者管理',
         meta: {
+          hideInMenu: true,
           title: '消费者管理',
           notCache: true,
           icon: 'md-home'
@@ -150,5 +186,107 @@ export default [
         component: () => import('@/view/consumer/consumer')
       }
     ]
+  },
+  {
+    path: '/admin',
+    name: '用户管理',
+    redirect: '/admin/user',
+    meta: {
+      title: '用户管理',
+      icon: 'md-home'
+    },
+    component: Main,
+    children: [
+      {
+        path: '/user',
+        name: '用户管理',
+        meta: {
+          hideInMenu: true,
+          title: '用户管理',
+          notCache: true,
+          icon: 'md-home'
+        },
+        component: () => import('@/view/user/user')
+      }
+    ]
+  },
+  {
+    path: '/admin',
+    name: '数据库备份',
+    redirect: '/admin/dbback',
+    meta: {
+      title: '数据库备份',
+      icon: 'md-home'
+    },
+    component: Main,
+    children: [
+      {
+        path: '/dbback',
+        name: '数据库备份',
+        meta: {
+          hideInMenu: true,
+          title: '数据库备份',
+          notCache: true,
+          icon: 'md-home'
+        },
+        component: () => import('@/view/dbback/dbback')
+      }
+    ]
+  },
+  {
+    path: '/',
+    name: '_home',
+    redirect: '/home',
+    component: Main,
+    meta: {
+      notCache: true,
+      hideInMenu: false
+    },
+    children: [
+      {
+        path: '/home',
+        name: 'home',
+        meta: {
+          hideInMenu: true,
+          title: '首页',
+          notCache: true,
+          icon: 'md-home'
+        },
+        component: () => import('@/view/home')
+      },
+      {
+        path: 'info',
+        name: '个人信息',
+        meta: {
+          icon: 'md-funnel',
+          title: '个人信息'
+        },
+        component: () => import('@/view/user-info/user-info.vue')
+      }
+    ]
+  },
+  {
+    path: '/401',
+    name: 'error_401',
+    meta: {
+      hideInMenu: true
+    },
+    component: () => import('@/view/error-page/401.vue')
+  },
+  {
+    path: '/500',
+    name: 'error_500',
+    meta: {
+      hideInMenu: true
+    },
+    component: () => import('@/view/error-page/500.vue')
+  },
+  {
+    path: '*',
+    name: 'error_404',
+    meta: {
+      hideInMenu: true
+    },
+    component: () => import('@/view/error-page/404.vue')
   }
 ]

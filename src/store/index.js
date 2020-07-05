@@ -7,6 +7,7 @@ import heatData from './module/heatData'
 import consumer from './module/consumer'
 import consumerConfig from './module/consumerConfig'
 import grps from './module/grps'
+import log from './module/log'
 
 Vue.use(Vuex)
 
@@ -26,6 +27,7 @@ export default new Vuex.Store({
     heatData,
     consumer,
     consumerConfig,
-    grps
+    grps,
+    log
   }
 })

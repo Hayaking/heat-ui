@@ -205,25 +205,6 @@ export default {
     }
   }
 }
-
-// export default {
-//   name: 'home',
-//   data () {
-//     return {
-//       testArr: []
-//     }
-//   },
-//   mounted () {
-//     console.info('0000000000000000000000000000')
-//     this.$socket.emit('data/test', '1111122222')
-//   },
-//   sockets: {
-//     test (data) {
-//       this.testArr = data
-//       console.info('socket connected')
-//     }
-//   }
-// }
 </script>
 
 <style lang="less" scoped>

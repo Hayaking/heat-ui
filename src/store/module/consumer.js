@@ -1,6 +1,7 @@
 import {
   delete_consumer_batch,
-  get_consumer_page, get_consumer_page_by_name,
+  get_consumer_page,
+  get_consumer_page_by_name,
   get_customer_list,
   upsert_consumer
 } from '@/api/consumer'

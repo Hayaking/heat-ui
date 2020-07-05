@@ -19,3 +19,10 @@ export const upsert_config = (config) => {
     method: 'post'
   })
 }
+
+export const get_config_by_id = (id) => {
+  return axios.request({
+    url: `/consumer/config/${id}`,
+    method: 'get'
+  })
+}

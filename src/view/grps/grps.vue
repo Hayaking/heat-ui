@@ -48,7 +48,7 @@ export default {
       callBack: null,
       TABLE_HEAD: [
         { type: 'selection', width: 60 },
-        { title: '站号', key: 'no' },
+        { title: '设备号', key: 'no' },
         { title: '描述', key: 'des' },
         { title: '是否在线', key: 'online' },
         {

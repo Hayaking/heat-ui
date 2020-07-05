@@ -1,5 +1,5 @@
 <style lang="less">
-  @import 'login.less';
+  @import './login.less';
 </style>
 
 <template>
@@ -8,7 +8,7 @@
       <Card icon="log-in" title="欢迎登录" :bordered="false">
         <div class="form-con">
           <login-form @on-success-valid="handleSubmit"></login-form>
-          <p class="login-tip">输入任意用户名和密码即可</p>
+          <Button @click="toResetPasswd" long>找回密码</Button>
         </div>
       </Card>
     </div>
@@ -38,6 +38,12 @@ export default {
         } else {
           this.$Message.error('登录失败')
         }
+      })
+    },
+    toResetPasswd () {
+
+      this.$router.push({
+        path: 'findPasswd'
       })
     }
   }
